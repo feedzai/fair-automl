@@ -1,0 +1,30 @@
+# https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+classpath: sklearn.tree.DecisionTreeClassifier
+hyperparameters:
+    max_depth:
+        sampling:
+            type: int
+            classpath: scipy.stats.foldnorm
+            kwargs:
+                loc: 1
+                scale: 9
+                c: 2
+    criterion:
+        - "gini"
+        - "entropy"
+    min_samples_split:
+        sampling:
+            type: int
+            classpath: scipy.stats.expon
+            kwargs:
+                loc: 2
+                scale: 46
+    min_samples_leaf:
+        sampling:
+            type: int
+            classpath: scipy.stats.expon
+            kwargs:
+                loc: 1
+                scale: 25
+    splitter:
+        - best

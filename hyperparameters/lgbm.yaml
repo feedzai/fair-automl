@@ -1,0 +1,43 @@
+classpath: lightgbm.LGBMClassifier
+hyperparameters:
+    boosting_type:
+        - goss
+        - gbdt
+        - dart  # Takes ~6 times longer than goss and gbdt
+    n_estimators:
+        sampling:
+            type: int
+            classpath: scipy.stats.geom
+            kwargs:
+                loc: 1
+                p: 0.0005
+    num_leaves:
+        sampling:
+            classpath: scipy.stats.geom
+            kwargs:
+                loc: 1
+                p: 0.01
+
+    learning_rate:
+        sampling:
+            classpath: scipy.stats.loguniform
+            kwargs:
+                loc: 0
+                a: 0.01
+                b: 1
+    max_depth:
+        sampling:
+            type: int
+            classpath: scipy.stats.geom
+            kwargs:
+                loc: 1
+                p: 0.02
+
+    min_child_samples: 
+        sampling:
+            type: int
+            classpath: scipy.stats.geom
+            kwargs:
+                loc: 1
+                p: 0.03
+

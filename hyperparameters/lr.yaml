@@ -1,0 +1,31 @@
+classpath: sklearn.linear_model.LogisticRegression
+hyperparameters:
+    penalty:
+        - l2
+        - l1
+
+    C:
+        - 1
+        - 0.1
+        - 0.01
+        - 0.001
+        - 0.0001
+        - 0.00001
+
+    tol:
+        sampling:
+            classpath: scipy.stats.loguniform
+            kwargs:
+                a: 0.00005
+                b: 0.01
+
+    max_iter:
+        sampling:
+            classpath: scipy.stats.geom
+            kwargs:
+                loc: 100
+                p: 0.001
+
+
+    solver:
+        - liblinear

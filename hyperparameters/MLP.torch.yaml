@@ -1,0 +1,68 @@
+classpath: custom.torch.implementation.FeedForwardClassifier
+hyperparameters:
+
+    batch_size:
+        - 2048
+
+    max_epochs:
+        - 50
+        - 25
+        - 75
+
+    ######################
+    # Model params BEGIN #
+    ######################
+    model__hidden_layers:
+        - [20]
+        - [20, 20]
+        - [20, 10]
+        - [50]
+        - [50, 50]
+        - [50, 25]
+        - [100]
+        - [100, 100]
+        - [100, 50]
+        - [200]
+        - [200, 200]
+        - [200, 100]
+        - [500]
+        - [500, 500]
+        - [500, 200]
+
+    model__use_batch_norm:
+        - True
+        - False
+
+    model__dropout:
+        sampling:
+            classpath: scipy.stats.uniform
+            kwargs:
+                loc: 0.0
+                scale: 0.4
+
+    ####################
+    # Model params END #
+    ####################
+
+    # Optimizer params
+    optimizer__lr:
+        sampling:
+            classpath: scipy.stats.loguniform
+            kwargs:
+                a: 0.0005
+                b: 0.005
+
+    optimizer__betas:
+        - [0.9, 0.999]
+        - [0.9, 0.9995]
+        - [0.95, 0.999]
+        - [0.95, 0.9995]
+
+    optimizer__weight_decay:
+        - 0
+        - 0.01
+        - 0.001
+
+    optimizer__amsgrad:
+        - True
+        - False

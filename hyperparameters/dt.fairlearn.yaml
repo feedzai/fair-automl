@@ -1,0 +1,60 @@
+# https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+classpath: custom.dtbased.FairLearnClassifier
+hyperparameters:
+    estimator:
+        - sklearn.tree.DecisionTreeClassifier
+
+    constraints:
+#        - fairlearn.reductions.FalsePositiveRateParity       # AOF, COMPAS
+        - fairlearn.reductions.TruePositiveRateDifference    # Adult, DC
+
+    protected_column:
+        - sex
+
+    unawareness:
+        - False
+
+    # Fairlearn hyperparameters
+    eps:
+        sampling:
+            classpath: scipy.stats.loguniform
+            kwargs:
+                a: 0.025
+                b: 0.50
+
+    T:  # this is dubbed `max_iter` on the latest version
+        - 20
+        - 50
+
+    # Hyperparameters from base estimator
+    model__max_depth:
+        sampling:
+            type: int
+            classpath: scipy.stats.foldnorm
+            kwargs:
+                loc: 1
+                scale: 9
+                c: 2
+
+    model__criterion:
+        - "gini"
+        - "entropy"
+
+    model__min_samples_split:
+        sampling:
+            type: int
+            classpath: scipy.stats.expon
+            kwargs:
+                loc: 2
+                scale: 46
+
+    model__min_samples_leaf:
+        sampling:
+            type: int
+            classpath: scipy.stats.expon
+            kwargs:
+                loc: 1
+                scale: 25
+
+    model__splitter:
+        - best
