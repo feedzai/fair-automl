@@ -1,4 +1,4 @@
-# Fairness-Aware Hyperparameter Optimization
+# A Bandit-based Algorithm for Fairness-Aware Hyperparameter Optimization
 
 This repository contains code, plots, and ML artifacts from the following paper: [arXiv link]
 
@@ -65,7 +65,7 @@ This repository contains code, plots, and ML artifacts from the following paper:
 ```
 @article{cruz2020fairness,
   title={Fairness-Aware Hyperparameter Optimization},
-  author={F. Cruz, Andr{\'e} and Bel{\'e}m, Catarina and Saleiro, Pedro and Soares, Carlos and Bizarro, Pedro},
+  author={F. Cruz, Andr{\'e} and Saleiro, Pedro and Bel{\'e}m, Catarina and Soares, Carlos and Bizarro, Pedro},
   journal={arXiv preprint arXiv:1811.05577},
   year={2020}
 }
