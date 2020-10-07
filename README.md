@@ -1,6 +1,6 @@
 # A Bandit-based Algorithm for Fairness-Aware Hyperparameter Optimization
 
-This repository contains code, plots, and ML artifacts from the following paper: [arXiv link]
+This repository contains ML artifacts and other materials from the paper.
 
 ## Key Contributions
 
