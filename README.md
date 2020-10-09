@@ -1,6 +1,6 @@
 # A Bandit-based Algorithm for Fairness-Aware Hyperparameter Optimization
 
-This repository contains ML artifacts and other materials from the [paper](https://arxiv.org/abs/2010.03665).
+This repository contains ML artifacts and other materials from the experiments performed on the [paper](https://arxiv.org/abs/2010.03665).
 
 ## Key Contributions
 
@@ -15,8 +15,8 @@ This repository contains ML artifacts and other materials from the [paper](https
 
 - [`data`](data) contains detailed artifacts generated from each experiment;
   - one csv file per dataset, each containing 15 runs per hyperparameter tuner (each uniquely identified by its _run\_uuid_);
-  - each iteration (row) details the sampled hyperparameter configuratoin and validation/test results for predictive accuracy and fairness;
-- [`code`](code) contains misc. jupyter noteboks used for the paper;
+  - each iteration (row) details the sampled hyperparameter configuration and validation/test results for predictive accuracy and fairness;
+- [`code`](code) contains misc. jupyter notebooks used for the paper;
   - [`code/plots.ipynb`](code/plots.ipynb) generates plots for all datasets from the provided data files;
   - [`code/stats.ipynb`](code/stats.ipynb) computes validation/test results for each experiment, as well as p-values of statistical difference between hyperparameter tuners;
 - [`imgs`](imgs) contains all generated plots for all datasets (all plots from the paper plus a few that didn't make it due to space);
@@ -26,6 +26,12 @@ This repository contains ML artifacts and other materials from the [paper](https
 ## Fairband: Selected Fairness-Accuracy Trade-off, discriminated by Model Type
 
 ![EG Experiment](imgs/Adult/EG_experiment.png)
+
+Running Fairband (15 runs) on the [Adult dataset](http://archive.ics.uci.edu/ml/datasets/Adult) supplied with the following model choices: Neural Network (NN), Random Forest (RF), Decision Tree (DT), Logistic Regression (LR), LightGBM (LGBM), and Exponentiated Gradient reduction for fair classification (EG).
+
+EG is a state-of-the-art bias reduction method available at [fairlearn](https://github.com/fairlearn/fairlearn).
+
+As shown by the plot, **blindly applying bias reduction techniques may lead to suboptimal fairness-accuracy trade-offs**. In this example, EG can be dominated by NN models. Fairband should be used in conjunction with a wide portfolio of model choices.
 
 
 <!-- ## Fairband: Fairness and Accuracy Progression
