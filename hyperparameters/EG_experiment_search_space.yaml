@@ -1,0 +1,55 @@
+# Learner/In-processing Hyperparameters:
+
+learner_hyperparams:
+
+    DT_FAIRLEARN:
+        classpath: fairautoml.wrappers.fairlearn.FairLearnClassifier
+
+        kwargs:
+            estimator: sklearn.tree.DecisionTreeClassifier
+
+            constraints:
+                - fairlearn.reductions.FalsePositiveRateParity       # For datasets: AOF, COMPAS
+                # - fairlearn.reductions.TruePositiveRateDifference    # For datasets: Adult, DC
+
+            protected_column: # NOTE! CHECK THIS BEFORE RUNNING!
+                - "age_group"       # For AOF dataset
+                # - "sex"             # For Adult dataset
+                # - "poverty_level"   # For DC dataset
+                # - "race_Caucasian"  # For COMPAS dataset
+
+            unawareness:
+                - False
+
+            # Fairlearn hyperparameters
+            eps:
+                type: float
+                range: [ 0.01, 1.0 ]
+                log: True
+
+            T:
+                type: int
+                range: [ 20, 50 ]
+
+            # Hyperparameters from base estimator
+            model__max_depth:
+                type: int
+                range: [ 5, 150 ]
+                log: True
+
+            model__criterion:
+                - "gini"
+                - "entropy"
+
+            model__min_samples_split:
+                type: int
+                range: [ 3, 100 ]
+                log: True
+
+            model__min_samples_leaf:
+                type: int
+                range: [ 2, 80 ]
+                log: True
+
+            model__splitter:
+                - best

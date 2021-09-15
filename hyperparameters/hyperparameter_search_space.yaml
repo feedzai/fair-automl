@@ -1,0 +1,192 @@
+# Learner/In-processing Hyperparameters:
+
+learner_hyperparams:
+
+    LR:
+        classpath: sklearn.linear_model.LogisticRegression
+
+        kwargs:
+            penalty:
+                - l2
+                - l1
+
+            C:
+                - 1
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001
+
+            tol:
+                type: float
+                range: [ 0.00005, 0.01 ]
+                log: True
+
+            max_iter:
+                type: int
+                range: [ 50, 5000 ]
+                log: True
+
+            solver:
+                - liblinear
+
+    DT:
+        classpath: sklearn.tree.DecisionTreeClassifier
+
+        kwargs:
+            max_depth:
+                type: int
+                range: [ 5, 150 ]
+                log: True
+
+            criterion:
+                - "gini"
+                - "entropy"
+
+            min_samples_split:
+                type: int
+                range: [ 3, 100 ]
+                log: True
+
+            min_samples_leaf:
+                type: int
+                range: [ 2, 80 ]
+                log: True
+
+            splitter:
+                - best
+
+    LGBM:
+        classpath: lightgbm.LGBMClassifier
+
+        kwargs:
+            boosting_type:
+                - goss
+                - gbdt
+                - dart  # Takes ~6 times longer than goss and gbdt
+
+            enable_bundle:
+                - False
+
+            # Number of base estimators
+            n_estimators:
+                type: int
+                range: [ 20, 10000 ]
+                log: True
+
+            # Max tree leaves for base learners
+            num_leaves:
+                type: int
+                range: [ 10, 1000 ]
+                log: True
+
+            # min_data_in_leaf
+            min_child_samples:
+                type: int
+                range: [ 5, 300 ]
+                log: True
+
+            # Max depth for base learners
+            max_depth:
+                type: int
+                range: [ 2, 20 ]
+                log: True
+
+            learning_rate:
+                type: float
+                range: [ 0.02, 0.5 ]
+                log: True
+
+    MLP:
+        classpath: fairautoml.wrappers.nn.FeedForwardClassifier
+
+        kwargs:
+            batch_size:
+                - 2048
+
+            # Training params
+            max_epochs:
+                type: int
+                range: [10, 150]
+
+            # Model params
+            model__input_dim:
+                - ${n_features}
+
+            model__hidden_layers:
+                - [ 20 ]
+                - [ 20, 20 ]
+                - [ 20, 10 ]
+                - [ 50 ]
+                - [ 50, 50 ]
+                - [ 50, 25 ]
+                - [ 100 ]
+                - [ 100, 100 ]
+                - [ 100, 50 ]
+                - [ 200 ]
+                - [ 200, 200 ]
+                - [ 200, 100 ]
+                - [ 500 ]
+                - [ 500, 500 ]
+                - [ 500, 200 ]
+
+            model__use_batch_norm:
+                - True
+                - False
+
+            model__dropout:
+                type: float
+                range: [ 0, 0.4 ]
+
+            # Optimizer params
+            optimizer__lr:
+                type: float
+                range: [ 0.0005, 0.005 ]
+                log: True
+
+            optimizer__betas:
+                - [ 0.9, 0.999 ]
+
+            optimizer__weight_decay:
+                - 0
+                - 0.01
+                - 0.001
+
+            optimizer__amsgrad:
+                - True
+                - False
+
+    RF:
+        classpath: sklearn.ensemble.RandomForestClassifier
+
+        kwargs:
+            n_jobs: -3
+
+            n_estimators:
+                type: int
+                range: [ 5, 20000 ]
+                log: True
+
+            max_depth:
+                type: int
+                range: [ 5, 50 ]
+                log: True
+
+            criterion:
+                - "gini"
+                - "entropy"
+
+            min_samples_split:
+                type: int
+                range: [ 2, 120 ]
+                log: True
+
+            min_samples_leaf:
+                type: int
+                range: [ 2, 100 ]
+                log: True
+
+            max_features:
+                - "sqrt" # <=> "auto"
+                - "log2"
