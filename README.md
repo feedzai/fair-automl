@@ -6,7 +6,7 @@ This repository contains ML artifacts and other materials from the experiments p
 
 - An approach for promoting model fairness that can be easily plugged into current ML pipelines with no extra development or computational cost.
 - A set of competitive fairness-aware HO algorithms for multi-objective optimization of the fairness-accuracy trade-off that are agnostic to both the explored hyperparameter space and the objective metrics.
-- Strong empirical evidence that hyperparameter optimization is an effective way to navigate the fairness-accuracy trade-off.
+- Strong empirical evidence that hyperparameter optimization (HO) is an effective way to navigate the fairness-accuracy trade-off.
 - A heuristic to automatically set the fairness-accuracy trade-off parameter.
 - Competitive results on a real-world fraud detection use case, as well as on three datasets from the fairness literature (Adult, COMPAS, Donors Choose).
 
@@ -14,8 +14,11 @@ This repository contains ML artifacts and other materials from the experiments p
 ## Repository Structure
 
 - [`data`](data) contains detailed artifacts generated from each experiment;
-  - one csv file per dataset, each containing 15 runs per hyperparameter tuner (each uniquely identified by its _run\_uuid_);
-  - each iteration (row) details the sampled hyperparameter configuration and validation/test results for predictive accuracy and fairness;
+  - `all_tuner_iters_evals_<dataset>.csv.gz` contains all HO iterations from all tuners for each dataset;
+  - `<dataset>_non-aggregated-results.csv` contains one row per each HO run, for all tuners except TPE and FairTPE;
+  - `all-datasets-with-TPE-tuner_non-aggregated-results.csv` contains one row per each HO run for TPE and FairTPE (all datasets on the same file);
+  - `results_all_datasets.csv` contains one row per each HO run for all tuners, for all datasets;
+  - `AOF-EG-experiment_non-aggregated-results.csv` contains data from the EG experiment (adding the Exponentiated Gradient reduction bias-reduction method to the search space);
 - [`code`](code) contains misc. jupyter notebooks used for the paper;
   - [`code/plots.ipynb`](code/plots.ipynb) generates plots for all datasets from the provided data files;
   - [`code/stats.ipynb`](code/stats.ipynb) computes validation/test results for each experiment, as well as p-values of statistical difference between hyperparameter tuners;
