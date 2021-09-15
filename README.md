@@ -28,16 +28,12 @@ This repository contains ML artifacts and other materials from the experiments p
 
 ## Fairband: Selected Fairness-Accuracy Trade-off, discriminated by Model Type
 
-| AOF dataset | Adult dataset |
-|:-----------:|:-------------:|
-|     ![EG Experiment on AOF dataset](imgs/AOF/AOF_fairness_performance_selected_by_model_type.png)     |      ![EG Experiment on Adult dataset](imgs/Adult/Adult_fairness_performance_selected_by_model_type.png)      |
+![EG Experiment on AOF dataset](imgs/AOF/AOF_fairness_performance_selected_by_model_type.png)
 
-
-Running Fairband (15 runs) on the AOF and Adult datasets, supplied with the following model choices: Neural Network (NN), Random Forest (RF), Decision Tree (DT), Logistic Regression (LR), LightGBM (LGBM), and Exponentiated Gradient reduction for fair classification (EG).
-
-EG is a state-of-the-art bias reduction method available at [fairlearn](https://github.com/fairlearn/fairlearn).
-
-As shown by the plot, **blindly applying bias reduction techniques may lead to suboptimal fairness-accuracy trade-offs**. In this example, EG is dominated by LGBM models on the AOF dataset, and by NN models on the Adult dataset. Fairband should be used in conjunction with a wide portfolio of model choices to achieve fairness.
+- Plot for the EG experiment on the Adult dataset [here](imgs/Adult/Adult_fairness_performance_selected_by_model_type.png).
+- _Experiment:_ running Fairband (15 runs) on the AOF and Adult datasets, supplied with the following model choices: Neural Network (NN), Random Forest (RF), Decision Tree (DT), Logistic Regression (LR), LightGBM (LGBM), and Exponentiated Gradient reduction for fair classification (EG).
+- EG is a state-of-the-art bias reduction method available at [fairlearn](https://github.com/fairlearn/fairlearn).
+- As shown by the plot, **blindly applying bias reduction techniques may lead to suboptimal fairness-accuracy trade-offs**. In this example, EG is dominated by LGBM models on the AOF dataset, and by NN models on the Adult dataset. Fairband should be used in conjunction with a wide portfolio of model choices to achieve fairness.
 
 
 ## Citing
