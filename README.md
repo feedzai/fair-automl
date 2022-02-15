@@ -38,13 +38,14 @@ This repository contains ML artifacts and other materials from the experiments p
 
 ## Citing
 ```
-@inproceedings{cruz2021FairHO,
-      title={{Promoting Fairness through Hyperparameter Optimization}}, 
-      author={Andr\'e F. Cruz and Pedro Saleiro and Catarina Bel\'em and Carlos Soares and Pedro Bizarro},
-      year={2021},
-      eprint={2103.12715},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      booktitle={ICLR 2021 Workshop on Responsible AI}
+@inproceedings{cruz2021promoting,
+    title={Promoting Fairness through Hyperparameter Optimization},
+    author={Cruz, Andr{\'{e}} F. and Saleiro, Pedro and Bel{\'{e}}m, Catarina and Soares, Carlos and Bizarro, Pedro},
+    booktitle={2021 {IEEE} International Conference on Data Mining ({ICDM})},   
+    year={2021},
+    pages={1036-1041},
+    publisher={{IEEE}},
+    url={https://doi.org/10.1109/ICDM51629.2021.00119},
+    doi={10.1109/ICDM51629.2021.00119}
 }
 ```
